@@ -2,7 +2,6 @@ const image = document.getElementById('image');
 let clickNum = document.getElementById('clickNum');
 let title = document.getElementById('title');
 
-
 const store = document.querySelector('.store');
 
 // clickNum.innerText = 0
@@ -14,11 +13,10 @@ image.addEventListener("click", (e)=>{
     localStorage.setItem('clickNum', clickNum.innerText);
 })
 
-
+clickNum.innerText = localStorage.getItem('clickNum')
 
 
 // let store1Int = parseInt(localStorage.getItem('white flower'));
-let store2Int = parseInt(localStorage.getItem('yellow flower'));
 let store3Int = parseInt(localStorage.getItem('pink flower'));
 let store4Int = parseInt(localStorage.getItem('red flower'));
 
@@ -26,7 +24,7 @@ let storeInt = parseInt(localStorage.getItem('clickNum'));
 
 
 //display what we have in our local storage when the page is reloaded
-clickNum.innerText = localStorage.getItem('clickNum')
+
 
 //////////////////////////////////////store1/////////////////////////////////////////////
 
@@ -34,15 +32,37 @@ clickNum.innerText = localStorage.getItem('clickNum')
 const store1Btn = document.getElementById('store1Btn')
 store.appendChild(store1Btn)
 
-localStorage.getItem("white flower");
 let store1Int = parseInt(localStorage.getItem('white flower'));
 
-// localStorage.setItem("white flower", title.innerText)
+
+if(localStorage.getItem('white flower') === null){
+
+    localStorage.setItem('white flower', title.innerText)
+
+   
+
+    store1Btn.addEventListener("click", changePrice1)  
+
+    
+}else{
+
+    title.innerText = localStorage.getItem('white flower')
+
+    store1Btn.addEventListener("click", changePrice1)  
+
+}
 
 //function to change the price
 function changePrice1(){
-    
+
+    title.innerText = localStorage.getItem('white flower')
+    let store1Int = parseInt(localStorage.getItem('white flower'));
+
+    console.log(store1Int)
+
     if(clickNum.innerText >= store1Int){
+
+        
         clickNum.innerText = clickNum.innerText - store1Int
         localStorage.setItem('clickNum', clickNum.innerText);
         
@@ -55,15 +75,12 @@ function changePrice1(){
         
     }
     else {
-        alert("attention")
+        alert("you do not have enough clicks")
     }
     
 }
 
-store1Btn.addEventListener("click", changePrice1)
 
-title.innerText = localStorage.getItem('white flower')
-localStorage.setItem("white flower", title.innerText)
 
 //////////////////////////////////////////////store2//////////////////////////////////
 
@@ -106,8 +123,8 @@ localStorage.setItem("white flower", title.innerText)
     
 // }
 
-// setInterval(() =>{
-//     localStorage.getItem('clickNum');
-//     localStorage.getItem('white flower')
-
-// }, 1000);
+// function myTimer() {
+//     clickNum.innerText++; 
+//     localStorage.setItem('clickNum', clickNum.innerText);
+// }
+// setInterval(myTimer, 1000);
