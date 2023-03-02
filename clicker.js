@@ -10,11 +10,11 @@ const store3 = document.querySelector('.store3');
 
 // clickNum.innerText = 0
 
-
+let storeInt = parseInt(localStorage.getItem('clickNum'));
 //add a click in our local storage each time we click on our flower
 
 //if our storage is null give it the title in our html value
-if(localStorage.getItem('clickNum') === null){
+if(localStorage.getItem('clickNum') === null || isNaN(storeInt) === true){
 
     localStorage.setItem('clickNum', clickNum.innerText)
 
@@ -41,7 +41,7 @@ clickNum.innerText = localStorage.getItem('clickNum')
 // let store3Int = parseInt(localStorage.getItem('pink flower'));
 // let store4Int = parseInt(localStorage.getItem('red flower'));
 
-let storeInt = parseInt(localStorage.getItem('clickNum'));
+
 
 
 //display what we have in our local storage when the page is reloaded
@@ -60,7 +60,7 @@ if(localStorage.getItem('white flower') === null){
 
     localStorage.setItem('white flower', title1.innerText)
 
-   
+    localStorage.setItem('interval', '0')
 
     store1Btn.addEventListener("click", changePrice1)  
 
@@ -83,8 +83,11 @@ function changePrice1(){
     console.log(store1Int)
 
     if(clickNum.innerText >= store1Int){
-        
-        setInterval(myTimer, 10000);
+
+        interval1 = 0.1;
+        let storageInt = parseFloat(localStorage.getItem('interval'))
+        interval1 = interval1 + storageInt ;
+        localStorage.setItem('interval', interval1) ;
         
         clickNum.innerText = clickNum.innerText - store1Int
         localStorage.setItem('clickNum', clickNum.innerText);
@@ -117,7 +120,7 @@ if(localStorage.getItem('pink flower') === null){
 
     localStorage.setItem('pink flower', title2.innerText)
 
-   
+    localStorage.setItem('interval', '0')
 
     store2Btn.addEventListener("click", changePrice2)  
 
@@ -141,7 +144,10 @@ function changePrice2(){
 
     if(clickNum.innerText >= store2Int){
 
-        setInterval(myTimer, 5000);
+        interval2 = 0.5;
+        let storageInt = parseFloat(localStorage.getItem('interval'))
+        interval2 = interval2 + storageInt ;
+        localStorage.setItem('interval', interval2) ;
         
         clickNum.innerText = clickNum.innerText - store2Int
         localStorage.setItem('clickNum', clickNum.innerText);
@@ -196,7 +202,10 @@ function changePrice3(){
 
     if(clickNum.innerText >= store3Int){
 
-        setInterval(myTimer, 1000);
+        interval3 = 0.9
+        let storageInt = parseFloat(localStorage.getItem('interval'))
+        interval3 = interval3 + storageInt ;
+        localStorage.setItem('interval', interval3) ;
         
         clickNum.innerText = clickNum.innerText - store3Int
         localStorage.setItem('clickNum', clickNum.innerText);
@@ -223,6 +232,24 @@ function changePrice3(){
 
 
 function myTimer() {
-    clickNum.innerText++; 
+    let storageInt = parseFloat(localStorage.getItem('interval'))
+    clickNum.innerText = parseInt(clickNum.innerText) + storageInt
+    clickNum.innerText = Math.round(clickNum.innerText)
     localStorage.setItem('clickNum', clickNum.innerText);
 }
+
+setInterval(myTimer, 1000);
+
+const reset = document.getElementById('reset')
+
+reset.addEventListener("click", ()=>{
+    localStorage.setItem('clickNum', '0');
+    localStorage.setItem('white flower', '1');
+    localStorage.setItem('pink flower', '5');
+    localStorage.setItem('red flower', '10');
+    localStorage.setItem('interval', '0');
+    clickNum.innerText = localStorage.getItem('clickNum')
+    title1.innerText = localStorage.getItem('white flower')
+    title2.innerText = localStorage.getItem('pink flower')
+    title3.innerText = localStorage.getItem('red flower')
+})

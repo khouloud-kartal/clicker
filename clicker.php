@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="clicker.js" defer></script>
-    <title>Document</title>
+    <title>Clicker</title>
 </head>
 <body>
     <div class="click">
@@ -16,19 +16,24 @@
     </div>
     <div class="store">
         <div class="store1">
+            <h2>Price: </h2>
             <h3 id="title1">1</h3>
             <button id="store1Btn" >white flower</button>
         </div>
 
         <div class="store2">
+            <h2>Price: </h2>
             <h3 id="title2">5</h3>
             <button id="store2Btn" >Pink flower</button>
         </div>
 
         <div class="store3">
+            <h2>Price: </h2>
             <h3 id="title3">10</h3>
             <button id="store3Btn" >Red flower</button>
         </div>
     </div>
+
+    <button id="reset" >Reset</button>
 </body>
 </html>

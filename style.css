@@ -7,7 +7,7 @@ body{
     width: 100vw;
     height: 100vh;
     display: flex;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     align-items: center;
     flex-direction: column;
     background-image: url('./background.jpg');
@@ -16,32 +16,35 @@ body{
 }
 
 img{
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
 }
 
 .click{
     width: 100vw;
-    height: 50vh;
+    height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5vh;
 }
 
 .store{
     width: 100vw;
-    height: 40vh;
+    height: 60vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 5vw;
     align-items: center;
 }
 
 .store1, .store2, .store3{
-    width: 20%;
+    width: 200px;
     height: 20vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 8px;
     align-items: center;
     border-radius: 10px;
     
@@ -51,23 +54,35 @@ img{
     width: 60%;
     height: 25%;
     font-size: 16px;
-    background-color: white;
+    background-color: rgb(185, 76, 95);
     border: transparent;
-    box-shadow: 3px 3px 3px 3px gray;
+    color: aliceblue;
+    border-radius: 5px;
 }
 
 h3{
     font-size: 30px;
 }
 
-.store1{
+.store2, .store1, .store3{
     background-color: white;
 }
 
-.store2{
-    background-color: rgb(224, 141, 155);
+#reset{
+    width: 150px;
+    height: 150px;
+    margin-bottom: 5vh;
+    border-radius: 50%;
+    border: none;
+    background-color: white;
+    font-size: 20px;
 }
 
-.store3{
-    background-color: rgb(138, 44, 44);
+#reset:hover{
+    background-color: pink;
 }
+
+.store1 button:hover, .store2 button:hover, .store3 button:hover{
+    background-color: pink;
+}
+
